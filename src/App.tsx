@@ -1,4 +1,4 @@
-import ThemeProviderWrapper from "contexts/index";
+import ThemeProviderWrapper from "contexts";
 import { FirstComponent, ToggleDarkMode } from "components";
 import "./App.css";
 
