@@ -2,12 +2,9 @@ import React, { ReactNode, useState } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeContext } from "./theme-context";
+import { ChildrenProp } from "interface";
 
-interface Props {
-  children?: ReactNode;
-}
-
-const ThemeProviderWrapper = ({ children }: Props) => {
+const ThemeProviderWrapper = ({ children }: ChildrenProp) => {
   const [mode, setMode] = useState(false);
 
   const theme = React.useMemo(

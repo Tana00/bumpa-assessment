@@ -1,12 +1,13 @@
 import ThemeProviderWrapper from "contexts";
-import { FirstComponent, ToggleDarkMode } from "components";
+import { Card, Master } from "components";
 import "./App.css";
 
 function App() {
   return (
     <ThemeProviderWrapper>
-      <FirstComponent />
-      <ToggleDarkMode />
+      <Master>
+        <Card />
+      </Master>
     </ThemeProviderWrapper>
   );
 }
