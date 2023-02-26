@@ -1,24 +1,38 @@
-export const CardItem = () => {
+import { CountryInterface } from "interface";
+import { _formatNumber } from "utils";
+
+export const CardItem = ({
+  name,
+  flags,
+  region,
+  capital,
+  population,
+}: CountryInterface) => {
   return (
-    <div className="bg-white shadow-sm dark:shadow-none dark:bg-gray-800 w-fit rounded cursor-pointer hover:shadow-xl">
-      <img
-        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASIAAACuCAMAAAClZfCTAAAAElBMVEUAAAD/zgDdAADnAADaAAD/2AAtsSEoAAAA+ElEQVR4nO3QMQGAMAAEsYeCf8tIuI0pkZANAAAAAAAAAAAAAAAAAAAAgB8dwm6CoqQoKUqKkqKkKClKipKipCgpSoqSoqQoKUqKkqKkKClKipKipCgpSoqSoqQoKUqKkqKkKClKipKipCgpSoqSoqQoKUqKkqKkKClKipKipCgpSoqSoqQoKUqKkqKkKClKewh7CbsIipKipCgpSoqSoqQoKUqKkqKkKClKipKipCgpSoqSoqQoKUqKkqKkKClKipKipCgpSoqSoqQoKUqKkqKkKClKipKipCgpSoqSoqQoKUqKkqKkKClKipKipCgpSoqSoqQoKUofMGTNC8HkSxoAAAAASUVORK5CYII="
-        alt="country flag"
-      />
+    <div className="bg-white shadow-sm dark:shadow-none pb-4 dark:bg-gray-800 md:w-72 w-full rounded cursor-pointer hover:shadow-xl">
+      <div className="h-44 w-full">
+        <img
+          src={flags?.png}
+          alt={`${name?.common} flag`}
+          className="w-full h-full"
+        />
+      </div>
       <div className="py-6 px-8">
-        <p className="text-lg font-bold my-2">Germany</p>
+        <p className="text-lg font-bold my-2">{name?.common}</p>
         <div className="text-sm font-semibold text-gray-500 space-y-2 mt-2">
           <p>
             Population:
-            <span className="text-gray-400 pl-2 font-medium">81,770,900</span>
+            <span className="text-gray-400 pl-2 font-medium">
+              {_formatNumber(population)}
+            </span>
           </p>
           <p>
             Region:
-            <span className="text-gray-400 pl-2 font-medium">Europe</span>
+            <span className="text-gray-400 pl-2 font-medium">{region}</span>
           </p>
           <p>
             Capital:
-            <span className="text-gray-400 pl-2 font-medium">Berlin</span>
+            <span className="text-gray-400 pl-2 font-medium">{capital}</span>
           </p>
         </div>
       </div>

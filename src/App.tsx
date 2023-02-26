@@ -1,34 +1,21 @@
 import { ChangeEvent, useState } from "react";
+import { UseQueryResult, useQuery } from "react-query";
 import ThemeProviderWrapper from "contexts";
+import { getAllCountries } from "requests";
 import { Card, Master, SearchBar, FilterDropdown } from "components";
 import { useDebounce } from "hooks";
+import { CountryInterface, RegionProps } from "interface";
 import "./App.css";
-
-interface Country {
-  id: number;
-  name: string;
-  region: string;
-}
-
-const countriesList: Country[] = [
-  { id: 1, name: "America", region: "america" },
-  { id: 2, name: "Asia", region: "asia" },
-  { id: 3, name: "Africa", region: "africa" },
-  { id: 4, name: "Europe", region: "europe" },
-  { id: 5, name: "Oceania", region: "oceania" },
-];
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedRegion, setSelectedRegion] = useState<string>("");
+  const [selectedRegion, setSelectedRegion] = useState<RegionProps>(null);
+  const [type, setType] = useState<"all" | "region">("all");
 
-  const handleRegionChange = (region: string) => {
+  const handleRegionChange = (region: RegionProps) => {
     setSelectedRegion(region);
+    setType("region");
   };
-
-  const filteredCountries = selectedRegion
-    ? countriesList.filter((country) => country.region === selectedRegion)
-    : countriesList;
 
   const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -41,11 +28,24 @@ function App() {
     alert(value);
   }, 1000);
 
+  const {
+    data: allCountries,
+    isLoading: allCountriesLoading,
+  }: UseQueryResult<CountryInterface[], Error> = useQuery({
+    queryKey: ["getAllCountries", selectedRegion],
+    queryFn: () =>
+      getAllCountries({
+        type,
+        region: selectedRegion && selectedRegion,
+      }),
+    refetchOnWindowFocus: false,
+  });
+
   return (
     <ThemeProviderWrapper>
       <Master>
         <div className="my-10">
-          <div className="lg:flex w-full items-center justify-between">
+          <div className="sm:flex w-full items-center justify-between space-y-4 sm:space-y-0">
             <SearchBar
               placeholder="Search for a country..."
               onChange={handleSearch}
@@ -64,10 +64,13 @@ function App() {
               onChange={handleRegionChange}
             />
           </div>
-          {/* {filteredCountries?.map((country) => (
-            <p>{country.name}</p>
-          ))} */}
-          <Card />
+
+          <Card
+            onClick={() => {}}
+            // @ts-ignore
+            item={allCountries}
+            loading={allCountriesLoading}
+          />
         </div>
       </Master>
     </ThemeProviderWrapper>

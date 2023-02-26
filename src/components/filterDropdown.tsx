@@ -1,3 +1,4 @@
+import { RegionProps } from "interface";
 import { useEffect, useRef, useState } from "react";
 
 interface FilterOption {
@@ -7,9 +8,9 @@ interface FilterOption {
 
 interface FilterDropdownProps {
   options: FilterOption[];
-  selectedValue: string;
+  selectedValue: RegionProps;
   label: string;
-  onChange: (value: string) => void;
+  onChange: (value: RegionProps) => void;
 }
 
 export const FilterDropdown = ({
@@ -26,6 +27,7 @@ export const FilterDropdown = ({
   };
 
   const handleSelectOption = (option: FilterOption) => {
+    // @ts-ignore
     onChange(option.value);
     toggleDropdown();
   };
@@ -49,11 +51,14 @@ export const FilterDropdown = ({
   }, []);
 
   return (
-    <div className="relative inline-block text-left" ref={dropdownRef}>
+    <div
+      className="relative inline-block text-left w-full sm:w-48"
+      ref={dropdownRef}
+    >
       <div>
         <button
           type="button"
-          className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm dark:shadow-none py-3 px-4 bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 focus:outline-none focus-visible:outline-none"
+          className="inline-flex justify-between w-full rounded-md border border-transparent shadow-sm dark:shadow-none py-4 px-4 bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 focus:outline-none focus-visible:outline-none"
           id="filter-menu-button"
           onClick={toggleDropdown}
         >
@@ -75,7 +80,7 @@ export const FilterDropdown = ({
       </div>
 
       {isOpen && (
-        <div className="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5">
+        <div className="origin-top-right absolute right-0 mt-2 sm:w-48 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5">
           <div
             className="py-1"
             role="menu"
