@@ -11,7 +11,7 @@ export const ToggleDarkMode = () => {
       className="cursor-pointer flex items-center space-x-1"
     >
       <MdOutlineDarkMode className="w-5 h-5" />
-      <span className="text-sm">{mode === true ? "Light" : "Dark"} Mode</span>
+      <span className="text-sm">{mode ? "Light" : "Dark"} Mode</span>
     </div>
   );
 };

@@ -53,7 +53,7 @@ export const FilterDropdown = ({
       <div>
         <button
           type="button"
-          className="inline-flex justify-center w-full rounded-md border-none shadow-sm py-3 px-4 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus-visible:outline-none"
+          className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm dark:shadow-none py-3 px-4 bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 focus:outline-none focus-visible:outline-none"
           id="filter-menu-button"
           onClick={toggleDropdown}
         >
@@ -75,7 +75,7 @@ export const FilterDropdown = ({
       </div>
 
       {isOpen && (
-        <div className="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+        <div className="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5">
           <div
             className="py-1"
             role="menu"
@@ -87,9 +87,9 @@ export const FilterDropdown = ({
                 key={option.value}
                 className={`${
                   option.value === selectedValue
-                    ? "bg-gray-100"
-                    : "hover:bg-gray-100"
-                } block px-4 py-2 text-sm text-gray-700 w-full text-left`}
+                    ? "bg-gray-100 dark:bg-gray-600"
+                    : "hover:bg-gray-100 dark:hover:bg-gray-600"
+                } block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 w-full text-left`}
                 onClick={() => handleSelectOption(option)}
                 role="menuitem"
               >

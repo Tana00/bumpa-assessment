@@ -1,13 +1,8 @@
-import { useContext } from "react";
-import { ThemeContext } from "contexts/theme-context";
 import { Skeleton, Box } from "@mui/material";
 
 export const CardItemSkeleton = () => {
-  const { mode } = useContext(ThemeContext);
   return (
-    <div
-      className={`${mode !== true ? "bg-white" : "bg-gray-800"} rounded w-full`}
-    >
+    <div className="bg-white dark:bg-gray-800 rounded w-full">
       <Box sx={{ height: "10rem" }}>
         <Skeleton animation="wave" variant="rectangular" height={"100%"} />
       </Box>
