@@ -32,10 +32,10 @@ export const CountryDetailsComponent = () => {
         countryData?.map((data, i) => (
           <div key={i} className="lg:flex items-start justify-start w-full">
             <div
-              className={`lg:w-1/2 w-full bg-cover bg-center bg-no-repeat lg:h-[40rem] h-[20rem] lg:rounded-br-3xl`}
+              className={`lg:w-1/2 w-full bg-cover bg-center bg-no-repeat lg:h-[40rem] lg:min-h-screen h-[20rem] lg:rounded-br-3xl`}
               style={{ backgroundImage: `url(${data?.flags?.svg})` }}
             ></div>
-            <div className="lg:my-10 mx-5 lg:ml-20 py-10 lg:w-1/2 w-full">
+            <div className="lg:my-10 mx-5 lg:ml-20 py-10 lg:w-1/2 w-full px-5 lg:px-0">
               <div>
                 {/* back button */}
                 <button
@@ -45,7 +45,7 @@ export const CountryDetailsComponent = () => {
                   <MdOutlineArrowBackIosNew className="fill-current w-4 h-4 mr-2" />
                   <span>Go Back</span>
                 </button>
-                <h1 className="text-[3.8rem] leading-10 font-light my-10 flex items-center">
+                <h1 className="md:text-[3.8rem] text-4xl leading-tight lg:font-light font-medium my-10">
                   <span className="text-customGray6 dark:text-customGray2">
                     {data?.name?.official}
                   </span>

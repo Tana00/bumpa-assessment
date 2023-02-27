@@ -1,10 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { UseQueryResult, useQuery, useMutation } from "react-query";
-import {
-  getAllCountries,
-  getCountryByName,
-  getCountryByRegion,
-} from "requests";
+import { useMutation } from "react-query";
+import { getCountryByName, getCountryByRegion } from "requests";
 import {
   Card,
   Master,
@@ -38,33 +34,19 @@ function Home() {
     setSelectedRegion(null);
   };
 
+  // custom debounce hook for the search bar
   const debouncedSearchTerm = useDebounce(searchTerm, 1000, 3);
 
-  //   get all countries
-  const {
-    isLoading: allCountriesLoading,
-  }: UseQueryResult<CountryInterface[], Error> = useQuery({
-    queryKey: ["getAllCountries"],
-    queryFn: () => getAllCountries(),
-    onSuccess(data) {
-      setSearchTerm("");
-      setSelectedRegion(null);
-      setIsFetching(false);
-      setAllCountries(data);
-    },
-    onError(err) {
-      setIsError(true);
-    },
-    onSettled(data, error) {
-      // @ts-ignore
-      if (data?.response || error) {
-        setIsError(true);
-      } else {
-        setIsError(false);
-      }
-    },
-    refetchOnWindowFocus: false,
-  });
+  //   fetch all countries data with custom hook
+  const { isLoading: allCountriesLoading, data: allCountriesData } =
+    useGetAllCountries({
+      refetch,
+    });
+
+  useEffect(() => {
+    setIsError(false);
+    return setAllCountries(allCountriesData);
+  }, [allCountriesLoading, allCountriesData]);
 
   //   get all countries filtered by region
   const { mutate: mutateGetCountriesByRegion } = useMutation(
@@ -97,12 +79,12 @@ function Home() {
       setIsError(true);
     },
     onSuccess: (data) => {
+      setSearchTerm("");
       setIsFetching(false);
       // @ts-ignore
       setAllCountries(data);
     },
-    onSettled(data, error, variables, context) {
-      console.log("byregion", variables, context);
+    onSettled(data, error) {
       // @ts-ignore
       if (data?.response || error) {
         setIsError(true);
@@ -119,14 +101,6 @@ function Home() {
       mutateGetCountriesByName(debouncedSearchTerm);
     }
   }, [debouncedSearchTerm]);
-
-  //   Refetch all countries data with custom hook
-  const { isLoading, data } = useGetAllCountries({ refetch });
-
-  useEffect(() => {
-    setIsError(false);
-    return setAllCountries(data);
-  }, [isLoading]);
 
   return (
     <Master>
@@ -145,12 +119,11 @@ function Home() {
           />
         </div>
         {isError ? (
-          <EmptyState handleRefetch={() => setRefetch(true)} />
+          <EmptyState handleRefetch={() => setRefetch(!refetch)} />
         ) : (
           <Card
-            // @ts-ignore
             item={allCountries}
-            loading={allCountriesLoading || isLoading || isFetching}
+            loading={allCountriesLoading || allCountriesLoading || isFetching}
           />
         )}
       </div>

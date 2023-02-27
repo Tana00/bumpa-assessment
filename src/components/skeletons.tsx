@@ -27,7 +27,7 @@ export const CardItemSkeleton = () => {
 export const CountryDetailsSkeleton = () => {
   return (
     <div className="lg:flex items-start justify-start w-full">
-      <Box className="lg:h-[40rem] h-56 lg:w-1/2 w-full lg:rounded-br-3xl">
+      <Box className="lg:h-[40rem] lg:min-h-screen h-56 lg:w-1/2 w-full lg:rounded-br-3xl">
         <Skeleton animation="wave" variant="rectangular" height={"100%"} />
       </Box>
       <div className="lg:my-10 mx-5 lg:ml-20 py-10 lg:w-1/2 w-full">

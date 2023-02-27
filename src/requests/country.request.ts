@@ -43,6 +43,6 @@ export const getCountryByName = async (name: string) => {
 
 /** Fetch Country Details. The React-Query key is "getCountryDetails" */
 export const getCountryDetails = async ({ name }: { name: string }) => {
-  const res = await countryService.get(`name/${name}`);
+  const res = await countryService.get(`name/${name}?fullText=true`);
   return res;
 };
