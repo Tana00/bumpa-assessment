@@ -21,14 +21,16 @@ const apiResource = () => {
       return response?.data;
     },
     (error: AxiosError) => {
-      if (error?.response === undefined)
+      if (error?.response === undefined) {
         showToast("Unable to connect", "error");
-      else {
+        return error;
+      } else {
         const status = error?.response?.status;
         const errors: any = error?.response?.data;
 
         if (status === 404) {
-          return showToast("Resource not found", "error");
+          showToast("Data not found", "error");
+          return error;
         }
 
         const errorMessage = errors?.error || errors?.message;

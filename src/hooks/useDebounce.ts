@@ -1,13 +1,25 @@
-export const useDebounce = <T extends any[]>(
-  callback: (...args: T) => void,
-  delay: number
-) => {
-  let timeoutId: ReturnType<typeof setTimeout>;
+import { useState, useEffect } from "react";
 
-  return (...args: T) => {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => {
-      callback(...args);
+export const useDebounce = (
+  value: string,
+  delay: number,
+  minLength: number
+) => {
+  const [debouncedValue, setDebouncedValue] = useState("");
+
+  useEffect(() => {
+    if (value.length < minLength) {
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      setDebouncedValue(value);
     }, delay);
-  };
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [value, delay, minLength]);
+
+  return debouncedValue;
 };
