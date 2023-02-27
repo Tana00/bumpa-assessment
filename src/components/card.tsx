@@ -2,12 +2,11 @@ import { CardItem, CardItemSkeleton } from ".";
 import { CountryInterface } from "interface";
 
 interface Props {
-  onClick: (data: CountryInterface) => void;
   item: CountryInterface[];
   loading: boolean;
 }
 
-export const Card = ({ onClick, item, loading }: Props) => {
+export const Card = ({ item, loading }: Props) => {
   return (
     <div className="my-10">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-20">

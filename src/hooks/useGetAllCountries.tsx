@@ -5,12 +5,7 @@ import { getAllCountries } from "requests";
 export const useGetAllCountries = ({ refetch }: { refetch: boolean }) => {
   const { isLoading, data }: UseQueryResult<any, Error> = useQuery({
     queryKey: ["getAllCountries", refetch],
-    queryFn: () =>
-      getAllCountries({
-        type: "all",
-        region: null,
-        name: "",
-      }),
+    queryFn: () => getAllCountries(),
     refetchOnWindowFocus: false,
   });
 

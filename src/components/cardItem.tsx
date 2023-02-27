@@ -1,4 +1,5 @@
 import { CountryInterface } from "interface";
+import { useNavigate } from "react-router-dom";
 import { _formatNumber } from "utils";
 
 export const CardItem = ({
@@ -8,8 +9,12 @@ export const CardItem = ({
   capital,
   population,
 }: CountryInterface) => {
+  const navigate = useNavigate();
   return (
-    <div className="bg-white shadow-sm dark:shadow-none pb-4 dark:bg-gray-800 md:w-72 w-full rounded cursor-pointer hover:shadow-xl">
+    <div
+      onClick={() => navigate(`${name?.common}`)}
+      className="bg-white shadow-sm dark:shadow-none pb-4 dark:bg-gray-800 md:w-80 lg:w-72 w-full rounded cursor-pointer hover:shadow-xl"
+    >
       <div className="h-44 w-full">
         <img
           src={flags?.png}
