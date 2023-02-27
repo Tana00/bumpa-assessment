@@ -1,5 +1,5 @@
-import { ChangeEvent, useState } from "react";
-import { UseQueryResult, useQuery, useQueryClient } from "react-query";
+import { ChangeEvent, useEffect, useState } from "react";
+import { UseQueryResult, useQuery } from "react-query";
 import ThemeProviderWrapper from "contexts";
 import { getAllCountries } from "requests";
 import {
@@ -11,6 +11,7 @@ import {
 } from "components";
 import { useDebounce, useGetAllCountries } from "hooks";
 import { CountryInterface, RegionProps } from "interface";
+import { filterOptions } from "utils";
 import "./App.css";
 
 function App() {
@@ -20,10 +21,6 @@ function App() {
   const [allCountries, setAllCountries] = useState<CountryInterface[]>([]);
   const [isError, setIsError] = useState(false);
   const [refetch, setRefetch] = useState(false);
-
-  const queryClient = useQueryClient();
-
-  const { isLoading, data } = useGetAllCountries({ refetch });
 
   const handleRegionChange = (region: RegionProps) => {
     setSelectedRegion(region);
@@ -66,6 +63,13 @@ function App() {
     refetchOnWindowFocus: false,
   });
 
+  const { isLoading, data } = useGetAllCountries({ refetch });
+
+  useEffect(() => {
+    setIsError(false);
+    return setAllCountries(data);
+  }, [isLoading]);
+
   return (
     <ThemeProviderWrapper>
       <Master>
@@ -77,13 +81,7 @@ function App() {
               value={searchTerm}
             />
             <FilterDropdown
-              options={[
-                { label: "Africa", value: "africa" },
-                { label: "America", value: "america" },
-                { label: "Asia", value: "asia" },
-                { label: "Europe", value: "europe" },
-                { label: "Oceania", value: "oceania" },
-              ]}
+              options={filterOptions}
               label="Filter by Region"
               selectedValue={selectedRegion}
               onChange={handleRegionChange}
@@ -95,7 +93,7 @@ function App() {
             <Card
               onClick={() => {}}
               // @ts-ignore
-              item={allCountries || data}
+              item={allCountries}
               loading={allCountriesLoading || isLoading}
             />
           )}
