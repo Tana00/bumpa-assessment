@@ -14,7 +14,7 @@ export const CardItemSkeleton = () => {
           variant="text"
           className="text-lg font-bold my-2"
         />
-        <div className="text-sm font-semibold text-gray-500 space-y-2 mt-2">
+        <div className="text-sm font-semibold text-customGray5 space-y-2 mt-2">
           <Skeleton animation="wave" width="50%" height="1rem" variant="text" />
           <Skeleton animation="wave" width="50%" height="1rem" variant="text" />
           <Skeleton animation="wave" width="40%" height="1rem" variant="text" />

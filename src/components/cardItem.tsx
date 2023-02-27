@@ -24,20 +24,20 @@ export const CardItem = ({
       </div>
       <div className="py-6 px-8">
         <p className="text-lg font-bold my-2">{name?.common}</p>
-        <div className="text-sm font-semibold text-gray-500 space-y-2 mt-2">
+        <div className="text-sm font-semibold text-customGray5 space-y-2 mt-2">
           <p>
             Population:
-            <span className="text-gray-400 pl-2 font-medium">
+            <span className="text-customGray4 pl-2 font-medium">
               {_formatNumber(population)}
             </span>
           </p>
           <p>
             Region:
-            <span className="text-gray-400 pl-2 font-medium">{region}</span>
+            <span className="text-customGray4 pl-2 font-medium">{region}</span>
           </p>
           <p>
             Capital:
-            <span className="text-gray-400 pl-2 font-medium">{capital}</span>
+            <span className="text-customGray4 pl-2 font-medium">{capital}</span>
           </p>
         </div>
       </div>

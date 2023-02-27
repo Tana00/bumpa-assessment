@@ -58,7 +58,7 @@ export const FilterDropdown = ({
       <div>
         <button
           type="button"
-          className="inline-flex justify-between w-full rounded-md border border-transparent shadow-sm dark:shadow-none py-4 px-4 bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 focus:outline-none focus-visible:outline-none"
+          className="inline-flex justify-between w-full rounded-md border border-transparent shadow-sm dark:shadow-none py-4 px-4 bg-white dark:bg-gray-800 text-sm font-medium text-customGray7 dark:text-customGray2 hover:bg-gray-50 focus:outline-none focus-visible:outline-none"
           id="filter-menu-button"
           onClick={toggleDropdown}
         >
@@ -94,7 +94,7 @@ export const FilterDropdown = ({
                   option.value === selectedValue
                     ? "bg-gray-100 dark:bg-gray-600"
                     : "hover:bg-gray-100 dark:hover:bg-gray-600"
-                } block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 w-full text-left`}
+                } block px-4 py-2 text-sm text-customGray7 dark:text-customGray2 w-full text-left`}
                 onClick={() => handleSelectOption(option)}
                 role="menuitem"
               >

@@ -5,6 +5,13 @@ module.exports = {
     extend: {
       colors: {
         customGray1: "#f1f1f1",
+        customGray2: "#e5e7eb",
+        customGray4: "#9ca3af",
+        customGray5: "#6b7280",
+        customGray6: "#4b5563",
+        customGray7: "#374151",
+        customGray8: "#1f2937",
+        customGreen1: "#009444",
       },
       boxShadow: {
         sm: "0 8px 24px rgba(149, 157, 165, 0.2)",
