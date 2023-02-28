@@ -20,7 +20,6 @@ export interface CountryInterface {
   flag: any;
   currencies?: any;
   languages?: any;
-  independent?: boolean;
   coatOfArms?: { png: string; svg: string };
   subregion?: string;
   timezones: any[string];

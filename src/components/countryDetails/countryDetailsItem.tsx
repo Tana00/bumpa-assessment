@@ -27,18 +27,10 @@ export const CountryDetailsItem = ({ data }: Props) => {
 
   return (
     <div className="lg:flex items-start justify-start w-full">
-      {/* <div className="lg:w-1/2 w-full lg:h-[40rem] lg:min-h-screen h-[20rem]"> */}
       <div
         className={`bg-cover bg-center bg-no-repeat lg:w-1/2 w-full lg:h-[40rem] lg:min-h-screen h-[20rem]`}
         style={{ backgroundImage: `url(${data?.flags?.svg})` }}
       ></div>
-      {/* <p className="m-5">Border Countries</p>
-        <div className="w-full grid grid-cols-4 gap-x-4 mx-5">
-          {borderCountriesData?.map((borderCountry) => (
-            <CountryBorderCard data={borderCountry} />
-          ))}
-        </div>
-      </div> */}
 
       <div className="lg:my-5 mx-5 lg:ml-20 py-10 lg:w-1/2 w-full px-5 lg:px-0">
         <div>
@@ -119,12 +111,6 @@ export const CountryDetailsItem = ({ data }: Props) => {
                 )
               )}
             </div>
-            {/* <div>
-              <p className="text-xs uppercase font-medium">Is Independent</p>
-              <p className="dark:text-customGray4 text-customGray8 text-lg mt-1">
-                {data?.independent === true ? "Yes" : "No"}
-              </p>
-            </div> */}
             <div>
               <p className="text-xs uppercase font-medium">Timezone</p>
               <p className="dark:text-customGray4 text-customGray8 text-lg mt-1">
