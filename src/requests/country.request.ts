@@ -46,3 +46,11 @@ export const getCountryDetails = async ({ name }: { name: string }) => {
   const res = await countryService.get(`name/${name}?fullText=true`);
   return res;
 };
+
+/** Fetch Country Borders by CountryCodes. The React-Query key is "getCountriesByCodes" */
+export const getCountriesByCodes = async (codes: string | null) => {
+  const res = await countryService.get(
+    `alpha/?codes=${codes}&fields=name,flag`
+  );
+  return res;
+};

@@ -5,4 +5,4 @@ export * from "./skeletons";
 export * from "./search";
 export * from "./filterDropdown";
 export * from "./emptyState";
-export * from "./countryDetails";
+export * from "./countryDetails/countryDetails";

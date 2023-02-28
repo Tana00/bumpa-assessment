@@ -17,6 +17,7 @@ export interface CountryInterface {
   capital: string;
   region: string;
   flags: { svg: string; png: string };
+  flag: any;
   currencies?: any;
   languages?: any;
   independent?: boolean;
@@ -24,6 +25,7 @@ export interface CountryInterface {
   subregion?: string;
   timezones: any[string];
   maps?: { googleMaps: string; openStreetMaps: string };
+  borders?: any[];
 }
 
 export type RegionProps =
