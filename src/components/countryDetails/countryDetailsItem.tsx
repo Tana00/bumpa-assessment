@@ -120,7 +120,7 @@ export const CountryDetailsItem = ({ data }: Props) => {
             <div>
               <p className="text-xs uppercase font-medium">Border Countries</p>
               {borderCountriesData?.map(
-                (borderCountry: { name: { common: any }; flag: any }) => (
+                (borderCountry: { name: { common: any }; flag?: any }) => (
                   <p className="dark:text-customGray4 text-customGray8 text-lg my-1">
                     {`${borderCountry?.name?.common} ${borderCountry?.flag}`}
                   </p>

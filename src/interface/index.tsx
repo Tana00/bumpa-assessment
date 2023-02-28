@@ -17,12 +17,12 @@ export interface CountryInterface {
   capital: string;
   region: string;
   flags: { svg: string; png: string };
-  flag: any;
+  flag?: any;
   currencies?: any;
   languages?: any;
   coatOfArms?: { png: string; svg: string };
   subregion?: string;
-  timezones: any[string];
+  timezones?: any[string];
   maps?: { googleMaps: string; openStreetMaps: string };
   borders?: any[];
 }
