@@ -1,8 +1,9 @@
+import React from "react";
 import { ChangeEvent } from "react";
 import { BiSearch } from "react-icons/bi";
 
 interface SearchBarProps {
-  placeholder: string;
+  placeholder?: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   value: string;
 }

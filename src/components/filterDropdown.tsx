@@ -1,3 +1,4 @@
+import React from "react";
 import { RegionProps } from "interface";
 import { useEffect, useRef, useState } from "react";
 
@@ -8,8 +9,8 @@ interface FilterOption {
 
 interface FilterDropdownProps {
   options: FilterOption[];
-  selectedValue: RegionProps;
-  label: string;
+  selectedValue?: RegionProps;
+  label?: string;
   onChange: (value: RegionProps) => void;
 }
 

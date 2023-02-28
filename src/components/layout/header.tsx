@@ -1,3 +1,4 @@
+import React from "react";
 import { ToggleDarkMode } from "../toggleDarkMode";
 
 export const Header = () => {
